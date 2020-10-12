@@ -20,15 +20,15 @@ exports.signup = (req, res) =>{
 }
 
 exports.signin = (req, res) => {
-    const { email, password } = req.body;
-    User.findOne({email},(err, user) => {
+    const { email, password } = req.body; 
+    User.findOne({email},(err, user) => { 
         if(err || !user){
             return res.status(400).json({
                 error: "User with that email does not exist. Please signup"
             });
         }
 
-        if(!user.autenticate(password)){
+        if(!user.authenticate(password)){
             return res.status(401).json({
                 error: "Email or password don't match"
             });

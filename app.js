@@ -30,10 +30,10 @@ db();
   
 // middlewares
 app.use(morgan("dev"));
-app.user(bodyParser.json());
-app.user(cookieParser());
+app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(expressValidator());
-app.user(cors());
+app.use(cors());
 
 // routes middelwares
 app.use("/api", authRoutes);

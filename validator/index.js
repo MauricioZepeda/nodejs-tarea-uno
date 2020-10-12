@@ -1,4 +1,5 @@
 exports.userSignupValidator = (req, res, next) => {
+    console.log(req.body)
     req.check("names", "Names are required")
         .notEmpty();
     req.check("surnames", "Surnames are required")
@@ -22,7 +23,7 @@ exports.userSignupValidator = (req, res, next) => {
     const errors = req.validationErrors();
     if(errors){
         const firstError = errors.map(error => error.msg)[0];
-        return req.status(400).json({
+        return res.status(400).json({
             error: firstError
         });
     }

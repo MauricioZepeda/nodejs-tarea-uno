@@ -77,16 +77,16 @@ UserSchema
 
 UserSchema.methods = {
     authenticate: function(plainText){
-        return this.encryptPassword(plainText) === this.hashed_password;
+        const encriptado = this.encryptPassword(plainText); 
+        return encriptado === this.hashed_password;
     },
 
-    encryptPassword: function(password){
+    encryptPassword: function(password){ 
         if(!password) return "";
-        try{
-            return crypto
-                    .createHmac("sha1", this.salt)
-                    .update(password)
-                    .digest("hex");
+        try{ 
+            return crypto.createHmac('sha1', process.env.JWT_SECRET)
+                               .update(password)
+                               .digest('hex');  
         }catch(err){
             return "";
         }
