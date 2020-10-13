@@ -40,8 +40,8 @@ exports.signin = (req, res) => {
         res.cookie("t", token, { expire: new Date() + 9999 });
 
         //retorna el token y los datos del usuario
-        const {_id, names, surnames, avatar } = user;
-        return res.json({token, user: {_id, names, surnames, avatar }});
+        const {_id, names, surnames, avatar, role } = user;
+        return res.json({token, user: {_id, names, surnames, avatar, role }});
     });
 }
 
@@ -52,12 +52,12 @@ exports.signout = (req, res) => {
     });
 }
 
-exports.requiredSignin = expressJwt({
+exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRET,
     userProperty: "auth"
 });
 
-exports.isAuth = (req, res, next) => {
+exports.isAuth = (req, res, next) => { 
     let user = req.profile && req.auth && req.profile._id == req.auth._id;
     if(!user){
         return res.status(403).json({ error : "Access denied"});
