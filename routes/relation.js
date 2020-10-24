@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.router();
+const router = express.router(); 
   
 routes.get('/relation');
-routes.post('/relation/create/:userRelationId'); //?
+routes.post('/relation/create/:userRelationId'); 
 routes.delete('/relation/:userRelationId'); 
  
 routes.param('userRelationId');

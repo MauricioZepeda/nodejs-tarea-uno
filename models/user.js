@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');  
 
-const UserSchema = new mongoose.Schema(
-    {
+const UserSchema = new mongoose.Schema({
         names: {
             type: String,
             required: true,
@@ -19,7 +18,7 @@ const UserSchema = new mongoose.Schema(
         },
         birthdate: {
             type: Date,
-            default: Date.now
+            default: Date.now()
         },
         email: {
             type: String,

@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
-const TweetSchema = new mongoose.Schema(
-    {
-        userId: { type: ObjectId, ref: "User" },
+const TweetSchema = new mongoose.Schema({
+        userId: { 
+            type: ObjectId, 
+            ref: "User" 
+        },
         message:{
             type: String,
             required: true,
